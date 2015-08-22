@@ -36,16 +36,16 @@ fload<-function(directory, typeofdata){
   activity_labels<-read.table("activity_labels.txt")
 
   #=========================
-  #load training data
+  #load data
   #=========================
-  #load 7352 subject_train
+  #load subjects in subject_train or subject_test
   subject<-read.table(paste(typeofdata,"/subject_",typeofdata,".txt", sep=""))
-  #load 7352 x_train
+  #load x_train or x_test
   x<-read.table(paste(typeofdata,"/x_",typeofdata,".txt", sep=""))
-  #load 7352 y_train
+  #load y_train or y_test
   y<-read.table(paste(typeofdata,"/y_",typeofdata,".txt", sep=""))
   
-  # Create subject+activity
+  # Create activity+subject
   act_sub<-cbind(left_join(y, activity_labels, by="V1"), subject)
   names(act_sub)<-c("Activity_Id", "Activity_label","Subject_Id")
   #===================================
